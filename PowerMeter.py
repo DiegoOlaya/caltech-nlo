@@ -28,4 +28,5 @@ class PowerMeter:
         return pow
 
     def close(self):
+        '''Closes VISA connection.'''
         self.instr.close()
