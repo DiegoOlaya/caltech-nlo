@@ -39,4 +39,5 @@ class RotaryStage:
 
     def close(self):
         '''Closes VISA connection.'''
+        self.move_to_pos(0)
         self.stage.close()
