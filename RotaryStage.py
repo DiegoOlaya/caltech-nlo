@@ -19,19 +19,18 @@ class RotaryStage:
         Inputs:
             pos: The position in degrees to move the stage to.
         '''
-        pos_in_steps = int(self.stepPerDeg * (pos/2))
+        pos_in_steps = int(self.stepPerDeg * (pos/2)) #Motor is off by factor of 2.
         hex_pos = "{0:0{1}x}".format(pos_in_steps, 8) #Converts decimal position to 8-digit hexadecimal.
-        stPos = self.stage.query("0ma" + hex_pos)
-        #Convert position hex string to degrees. Motor seems to be off by factor of 2.
-        self.pos = 2 * self.calc_pos(stPos[2:])
+        self.stage.write("0ma" + hex_pos)
+        self.pos = pos
 
     def calc_pos(self, posHex, bits=32):
         '''Calculates the position in degrees from the hexadecimal step number
         returned by the motor after it finishes moving.'''
-        value = int(posHex, 16)
-        if value & (1 << (bits-1)):
-            value -= 1 << bits
-        return value / self.stepPerDeg
+        # This method should be implemented when the group wants to directly read
+        # the position of the motor. I could not get it to work consistently, so 
+        # I moved on. It was not needed at the time.
+        pass
 
     def get_pos(self):
         '''Returns current position, in degrees, of the motor.
