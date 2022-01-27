@@ -13,6 +13,7 @@ class RotaryStage:
         self.stage.read_termination = '\r\n'
         self.stage.write('0ho0') #Home the motor.
         self.pos = 0 #State variable for motor position.
+        self.move_to_pos(0)
 
     def move_to_pos(self, pos):
         '''Moves the motor to a set absolute position in degrees. \n
