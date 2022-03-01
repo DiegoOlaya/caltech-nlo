@@ -28,7 +28,7 @@ class E36300:
             - chnl [`str`]: The channel specification. This is of form '(@1)' for channel 1, '(@1,3)' for channels 1 \
                 and 3, or '(@1:3)' for channels 1-3. The single quotes should not be included in the argument.
         '''
-        self.dcps.query_ascii_values("VOLT? " + chnl)
+        return self.dcps.query_ascii_values("VOLT? " + chnl)
 
     def query_output_voltage(self, chnl:str):
         '''Returns the voltage currently being output for the given channel or channels.
@@ -36,7 +36,7 @@ class E36300:
             - chnl [`str`]: The channel specification. This is of form '(@1)' for channel 1, '(@1,3)' for channels 1 \
                 and 3, or '(@1:3)' for channels 1-3. The single quotes should not be included in the argument.
         '''
-        self.dcps.query_ascii_values("MEAS:VOLT? " + chnl)
+        return self.dcps.query_ascii_values("MEAS:VOLT? " + chnl)
 
     # Current control functions.
     def set_current(self, curr:float, chnl:str):
@@ -55,7 +55,7 @@ class E36300:
             - chnl [`str`]: The channel specification. This is of form '(@1)' for channel 1, '(@1,3)' for channels 1 \
                 and 3, or '(@1:3)' for channels 1-3. The single quotes should not be included in the argument.
         '''
-        self.dcps.query_ascii_values("CURRENT? " + chnl)
+        return self.dcps.query_ascii_values("CURRENT? " + chnl)
 
     def query_output_current(self, chnl):
         '''Returns the current currently being output for the given channel or channels.
@@ -63,7 +63,7 @@ class E36300:
             - chnl [`str`]: The channel specification. This is of form '(@1)' for channel 1, '(@1,3)' for channels 1 \
                 and 3, or '(@1:3)' for channels 1-3. The single quotes should not be included in the argument.
         '''
-        self.dcps.query_ascii_values("MEAS:CURRENT? " + chnl)
+        return self.dcps.query_ascii_values("MEAS:CURRENT? " + chnl)
 
     #Output control function.
     def set_chnl_output(self, chnl='(@1:3)', on=False):
