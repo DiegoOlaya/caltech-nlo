@@ -77,4 +77,8 @@ class E36300:
         if on:
             self.dcps.write("OUTPUT ON, " + chnl)
         else:
-            self.dcps.write("OUTPUT OFF, " + chnl) 
+            self.dcps.write("OUTPUT OFF, " + chnl)
+
+    def close(self):
+        '''Closes VISA connection to device.'''
+        self.dcps.close()
