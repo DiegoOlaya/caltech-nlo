@@ -32,20 +32,18 @@ class DG4000:
             the frequency of the arbitrary waveform.
         '''
         t_end = self.calc_time(freq1, freq2)
-        t = np.linspace(0, t_end, 10000)
+        t = np.linspace(0, t_end, 5000)
         self.pts = 0.5*(np.sin(2*np.pi*freq1*t)+np.sin(2*np.pi*freq2*t))
         self.freq = 1/t_end
         return (self.pts, self.freq)
     
-    def write_pts(self, pts=None):
+    def write_pts(self, pts=[]):
         '''Writes the data points to the AWG's non-volatile memory under the provided name. \n
         Arguments:
             pts (optional): The points to load into memory. If not provided, the system will use \
                 the points stored as an instance variable.
-            name (optional): The name of the waveform. Defaults to 'LASER_REF' if no name \
-                is provided.
         '''
-        if pts == None:
+        if len(pts) == 0:
             pts = self.pts
         pass
         pts_str = ', '.join(map(str, pts))
