@@ -32,7 +32,7 @@ class DG4000:
             the frequency of the arbitrary waveform.
         '''
         t_end = self.calc_time(freq1, freq2)
-        t = np.linspace(0, t_end, 16384)
+        t = np.linspace(0, t_end, 10000)
         self.pts = 0.5*(np.sin(2*np.pi*freq1*t)+np.sin(2*np.pi*freq2*t))
         self.freq = 1/t_end
         return (self.pts, self.freq)
@@ -52,7 +52,7 @@ class DG4000:
         self.awg.write(":TRACE:DATA:DATA VOLATILE, " + pts_str)
 
     def output_waveform(self):
-        self.awg.write(":SOURCE:APPLY:CUSTOM")
+        self.awg.write(":SOURCE:APPLY:USER")
         self.awg.write(":OUTPUT ON")
 
     def stop_output(self):
