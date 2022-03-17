@@ -6,6 +6,8 @@ This repository contains the instrument control code for several instruments use
 - Yokogawa AQ6376 and AQ6374 Optical Spectrum Analyzers (`OSA.py`)
 - Agilent 33220A Arbitrary Waveform Generator (`AWG_33220A.py`)
 - Rigol DG4000 Series Arbitrary Waveform Generator (`AWG_DG4000.py`)
+- Agilent E36300 DC Power Supply (`DCPS_E36300.py`)
+- ThorLabs MDT693B Piezo Controller (`PC_MDT693B.py`)
 
 There are also small test scripts designed to confirm the functionality of the libraries for some instruments. The code is written using PyVISA to interface with all of the instruments, and commands are sourced from the respective manuals or, in the case of the powermeter, from ThorLabs technical support. To run the code, you will need the PyVISA and NumPy packages. The OSA test script additionaly requires MatPlotLib.
 
